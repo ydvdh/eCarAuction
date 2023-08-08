@@ -1,0 +1,16 @@
+﻿services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: carauctions
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: Pa$w0rd
+    ports:
+      - 5432:5432
+    expose:
+      - "5435"
+    volumes:
+      - /var/lib/postresql/data
+
+
+
