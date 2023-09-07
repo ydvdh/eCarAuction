@@ -478,3 +478,5 @@ $RECYCLE.BIN/
 
 # Vim temporary swap files
 *.swp
+/src/IdentityService/wwwroot/lib
+/src/IdentityService/wwwroot
