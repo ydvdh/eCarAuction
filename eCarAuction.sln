@@ -12,11 +12,11 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		docker-compose.yml = docker-compose.yml
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SearchAuctionService", "src\SearchAuctionService\SearchAuctionService.csproj", "{DED6812B-0606-4F19-B645-7171963CE2D7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SearchAuctionService", "src\SearchAuctionService\SearchAuctionService.csproj", "{DED6812B-0606-4F19-B645-7171963CE2D7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Contracts", "src\Contracts\Contracts.csproj", "{46B1F733-EB21-4846-89DA-D17F98FD53D2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Contracts", "src\Contracts\Contracts.csproj", "{46B1F733-EB21-4846-89DA-D17F98FD53D2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IdentityService", "src\IdentityService\IdentityService.csproj", "{E348F08E-2113-4802-8E94-87908F3626A0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IdentityService", "src\IdentityService\IdentityService.csproj", "{E348F08E-2113-4802-8E94-87908F3626A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
