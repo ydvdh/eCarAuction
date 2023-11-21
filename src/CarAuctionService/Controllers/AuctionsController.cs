@@ -5,6 +5,7 @@ using CarAuctionService.DTOs;
 using CarAuctionService.Entities;
 using Contracts;
 using MassTransit;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -44,12 +45,13 @@ namespace CarAuctionService.Controllers
             return _mapper.Map<AuctionDto>(auction);
         }
 
+        [Authorize]
         [HttpPost]
         public async Task<ActionResult<AuctionDto>> CreateAuction(CreateAuctionDto auctionDto)
         {
             var auction = _mapper.Map<Auction>(auctionDto);
 
-            auction.Seller = "test";
+            auction.Seller = User.Identity.Name;
             _dbContext.Add(auction);
             var result = await _dbContext.SaveChangesAsync() > 0;
 
@@ -62,6 +64,7 @@ namespace CarAuctionService.Controllers
             return CreatedAtAction(nameof(GetAllAuctions), new { auction.Id }, newAuction);
         }
 
+        [Authorize]
         [HttpPut("{id}")]
         public async Task<ActionResult> UpdateAuction(Guid id, UpdateAuctionDto updateAuctionDto)
         {
@@ -69,6 +72,7 @@ namespace CarAuctionService.Controllers
             if (auction == null) return NotFound();
 
             // Check if user is seller
+            if (auction.Seller != User.Identity.Name) return Forbid();
 
             auction.Item.Make = updateAuctionDto.Make ?? auction.Item.Make;
             auction.Item.Model = updateAuctionDto.Model ?? auction.Item.Model;
@@ -83,6 +87,7 @@ namespace CarAuctionService.Controllers
             return BadRequest("Problem saving the changes");
         }
 
+        [Authorize]
         [HttpDelete("{id}")]
         public async Task<ActionResult> DeleteAuction(Guid id)
         {
@@ -90,6 +95,7 @@ namespace CarAuctionService.Controllers
             if (auction == null) return NotFound();
 
             // TODO: Check seller == user
+            if (auction.Seller != User.Identity.Name) return Forbid();
 
             _dbContext.Auctions.Remove(auction);
 
