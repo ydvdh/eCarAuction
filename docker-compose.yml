@@ -59,7 +59,7 @@
       - ConnectionStrings__MongoDbConnection=mongodb://root:mongo123@mongodb
       - CarAuctionService=http://auction-svc
     ports:
-      - 7002:80
+      - 6001:80
     depends_on:
       - mongodb
       - rabbitmq
@@ -85,7 +85,7 @@
       - ASPNETCORE_ENVIRONMENT=Docker
       - ASPNETCORE_URLS=http://+:80
     ports:
-      - 6000:80
+      - 7001:80
   
   
 
