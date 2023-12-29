@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react'
+import React from 'react'
 import { FaSearch } from 'react-icons/fa'
 import { useParamsStore } from '../hooks/useParamsStore';
 
@@ -12,9 +12,11 @@ export default function Search() {
   function onChange(event: any){
     setSearchValue(event.target.value)
   }
+
   function search(){
     setParams({searchTerm: searchValue})
   }
+
   return (
     <div className='flex w-[50%] items-center border-2 rounded-full py-2 shadow-sm'>
         <input
